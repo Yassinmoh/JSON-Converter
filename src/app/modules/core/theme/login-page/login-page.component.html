@@ -1,1 +1,19 @@
-<p>login-page works!</p>
+<section class="login__section">
+  <div class="login__form">
+    <div class="logo">
+      <img src="../../../../../assets/images/logo-s.png" alt="Logo">
+    </div>
+    <div class="title">Login</div>
+    <form [formGroup]="loginForm">
+      <div class="form__item">
+        <input type="email" placeholder="Email"/>
+        <svg><use href="#message"></use></svg>
+      </div>
+
+      <button pButton class="login-button" (click)="login()">login</button>
+    </form>
+    <div class="forgot-password">
+      <a href="#">Forget Password?</a>
+    </div>
+  </div>
+</section>
