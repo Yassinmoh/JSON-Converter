@@ -1,9 +1,36 @@
 <section class="home__section">
   <div class="json__form">
-    <p class="title">JSON</p>
-    <form>
-      <textarea name="json" id=""></textarea>
-      <button type="submit">Convert</button>
+    <p class="title">JSON :</p>
+    <form [formGroup]="jsonForm">
+      <div>
+        <textarea id="jsonInput" formControlName="jsonInput"></textarea>
+        <div *ngIf="jsonForm.get('jsonInput')?.dirty && jsonForm.get('jsonInput')?.hasError('required')">
+          This field is required.
+        </div>
+        @if(errorMessage && jsonForm.get('jsonInput')?.dirty){
+          <p class="error">{{ errorMessage }}</p>
+          }
+      </div>
     </form>
   </div>
+
+  <div *ngIf="jsonData" class="table__data">
+      <p-table [value]="jsonData" sortField="price" [sortOrder]="-1">
+        <ng-template pTemplate="header">
+            <tr>
+              <th *ngFor="let key of jsonKeys" [pSortableColumn]="key" >{{ key }} <p-sortIcon [field]="key"/></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-jsondata>
+            <tr>
+              <td>{{ jsondata.OrderID }}</td>
+              <td>{{ jsondata.Date}}</td>
+              <td>{{ jsondata.CustomerName }}</td>
+              <td>{{ jsondata.Location }}</td>
+              <td>{{ jsondata.Amount }}</td>
+              <td>{{ jsondata.StatusOrder }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
 </section>
