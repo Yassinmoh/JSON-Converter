@@ -1,7 +1,7 @@
 @import 'common';
 
-:host{
-  .home__section{
+:host {
+  .home__section {
     min-height: 100vh;
   }
 }
@@ -12,7 +12,7 @@
 
   .json__form {
     .title {
-      @include textStyle(25px,22px,#000,600);
+      @include textStyle(25px, 22px, #000, 600);
       padding: 0.5rem 0;
       text-align: center;
     }
@@ -63,7 +63,7 @@
           outline: none;
         }
 
-        .error{
+        .error {
           color: red;
           padding: 1rem
         }
@@ -72,17 +72,46 @@
     }
   }
 
-  .table__data{
-   ::ng-deep p-table {
-      .p-datatable{
-        .p-datatable-wrapper{
-          .p-datatable-table{
-            .p-datatable-thead{
-              tr{
-                .p-element{
-                  padding: 1rem 0.2rem;
-                  margin-left: 0.5rem;
+  .table__data {
+    margin: 2rem 0;
 
+    ::ng-deep p-table {
+      .p-datatable {
+        .p-datatable-wrapper {
+          border-radius: 20px;
+          .p-datatable-table {
+            .p-datatable-thead {
+              tr {
+                th{
+                  border: 0;
+                }
+                .p-sortable-column {
+                  padding: 1rem 0 1rem 2rem;
+                  margin-left: 0.5rem;
+                  font-size: 13px;
+                  min-width: 10rem;
+                  .p-icon-wrapper {
+                    width: 12px;
+                    height: 12px;
+                    display: inline-flex;
+                    vertical-align: sub;
+                }
+                }
+              }
+            }
+
+            .p-datatable-tbody{
+              tr{
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                &:hover{
+                  background: #f5f7ff;
+                }
+                td{
+                  padding-left:2rem;
+                  border: 0;
+                  height: 74px;
+                  @include textStyle(13px, 18px, #3E4954, 500);
                 }
               }
             }
@@ -97,17 +126,52 @@
   :host {
     .home__section {
       padding: 3rem;
+
       .json__form {
-        .title{
+        .title {
           text-align: left;
           margin: 1rem 0 1rem 2rem;
         }
+
         form {
           >div {
             textarea {
               height: 524px;
               padding: 2rem;
               width: 100%;
+            }
+          }
+        }
+      }
+
+      .table__data {
+        margin: 3rem 0;
+
+        ::ng-deep p-table {
+          .p-datatable {
+            .p-datatable-wrapper {
+              .p-datatable-table {
+                .p-datatable-thead {
+                  tr {
+                    .p-sortable-column {
+                      padding: 1rem 0 1rem 2rem;
+                      margin-left: 0.5rem;
+                      font-size: 18px;
+                      .p-icon-wrapper{
+                        vertical-align: middle;
+                      }
+                    }
+                  }
+                }
+
+                .p-datatable-tbody{
+                  tr{
+                    td{
+                      font-size: 16px;
+                    }
+                  }
+                }
+              }
             }
           }
         }

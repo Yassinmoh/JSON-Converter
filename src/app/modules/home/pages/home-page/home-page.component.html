@@ -7,30 +7,33 @@
         <div *ngIf="jsonForm.get('jsonInput')?.dirty && jsonForm.get('jsonInput')?.hasError('required')">
           This field is required.
         </div>
-        @if(errorMessage && jsonForm.get('jsonInput')?.dirty){
+        <div *ngIf="errorMessage && jsonForm.get('jsonInput')?.dirty">
           <p class="error">{{ errorMessage }}</p>
-          }
+        </div>
       </div>
     </form>
   </div>
 
-  <div *ngIf="jsonData" class="table__data">
-      <p-table [value]="jsonData" sortField="price" [sortOrder]="-1">
-        <ng-template pTemplate="header">
-            <tr>
-              <th *ngFor="let key of jsonKeys" [pSortableColumn]="key" >{{ key }} <p-sortIcon [field]="key"/></th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-jsondata>
-            <tr>
-              <td>{{ jsondata.OrderID }}</td>
-              <td>{{ jsondata.Date}}</td>
-              <td>{{ jsondata.CustomerName }}</td>
-              <td>{{ jsondata.Location }}</td>
-              <td>{{ jsondata.Amount }}</td>
-              <td>{{ jsondata.StatusOrder }}</td>
-            </tr>
-        </ng-template>
-    </p-table>
+  <div *ngIf="jsonData && jsonKeys.length" class="filters">
+    <div *ngFor="let key of jsonKeys">
+      <label>{{ key }}</label>
+      <input type="text" [(ngModel)]="filters[key]" (input)="applyFilter()">
     </div>
+  </div>
+
+  <div *ngIf="jsonData" class="table__data">
+    <p-table [value]="paginatedData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let key of jsonKeys" [pSortableColumn]="key">{{ key }} <p-sortIcon [field]="key"/></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-jsondata>
+        <tr>
+          <td *ngFor="let key of jsonKeys">{{jsondata[key] }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-paginator [rows]="rows" [totalRecords]="filteredData.length" [rowsPerPageOptions]="[10, 20, 30]" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
 </section>
