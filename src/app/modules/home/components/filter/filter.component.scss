@@ -1,0 +1,92 @@
+@import 'common';
+
+.filter__section {
+  margin: 1rem 0;
+  padding: 0.5rem;
+
+  .title {
+    @include textStyle(25px, 22px, #000, 600);
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+  .filters{
+
+    .filter__field {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        @include textStyle(16px, 22px, #8C8C8C, 400);
+      }
+
+      input {
+        border: 0;
+        outline: none;
+        background: #fff;
+        height: 40px;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      border: 0;
+      outline: none;
+      height: 50px;
+      width: 100%;
+      border-radius: 8px;
+      padding: 0.5rem;
+      margin: 0.5rem auto;
+    }
+
+    button:nth-child(1) {
+      background: #5350ee;
+      @include textStyle(18px, 20px, #FFF, 400);
+    }
+
+    button:nth-child(2) {
+      border: 1px solid #777777;
+      @include textStyle(18px, 20px, #777777, 400);
+    }
+  }
+}
+
+
+@include DesktopScreen{
+  :host{
+    .filter__section{
+      margin: 3rem 0;
+      .title {
+        text-align: left;
+        padding: 1.2rem 0;
+      }
+      .filters{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .filter__field{
+          width: 15%;
+        }
+      }
+
+      .btns{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        gap: 1rem;
+        button{
+          width: 15%;
+          margin: 1rem 0;
+
+        }
+      }
+    }
+  }
+}

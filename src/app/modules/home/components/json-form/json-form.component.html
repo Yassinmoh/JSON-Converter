@@ -1,0 +1,19 @@
+<div class="json__form">
+  <p class="title">JSON :</p>
+  <form [formGroup]="jsonForm">
+    <div>
+      <textarea id="jsonInput" formControlName="jsonInput"></textarea>
+      @if(jsonForm.get('jsonInput')?.dirty && jsonForm.get('jsonInput')?.hasError('required')){
+        <div>
+          <p class="error">This field is required.</p>
+        </div>
+      }
+
+      @if(errorMessage && jsonForm.get('jsonInput')?.dirty){
+        <div>
+          <p class="error">{{ errorMessage }}</p>
+        </div>
+      }
+    </div>
+  </form>
+</div>

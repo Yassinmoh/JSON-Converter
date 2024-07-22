@@ -1,48 +1,5 @@
 <section class="home__section">
-  <div class="json__form">
-    <p class="title">JSON :</p>
-    <form [formGroup]="jsonForm">
-      <div>
-        <textarea id="jsonInput" formControlName="jsonInput"></textarea>
-        <div *ngIf="jsonForm.get('jsonInput')?.dirty && jsonForm.get('jsonInput')?.hasError('required')">
-          <p class="error">This field is required.</p>
-        </div>
-        <div *ngIf="errorMessage && jsonForm.get('jsonInput')?.dirty">
-          <p class="error">{{ errorMessage }}</p>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="filter__section">
-    @if(jsonData && jsonKeys.length){
-    <p class="title">Filter :</p>
-    <div class="filters">
-      <div *ngFor="let key of jsonKeys" class="filter__field">
-        <label>{{ key }}</label>
-        <input type="text" [(ngModel)]="filters[key]">
-      </div>
-    </div>
-    <div class="btns">
-      <button (click)="applyFilter()">Search</button>
-      <button (click)="clear()">Clear Search</button>
-    </div>
-    }
-
-  </div>
-
-  <div *ngIf="jsonData" class="table__data">
-    <p-table [value]="paginatedData">
-      <ng-template pTemplate="header">
-        <tr>
-          <th *ngFor="let key of jsonKeys" [pSortableColumn]="key">{{ key }} <p-sortIcon [field]="key" /></th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-jsondata>
-        <tr>
-          <td *ngFor="let key of jsonKeys">{{jsondata[key] }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <p-paginator [rows]="rows" [totalRecords]="filteredData.length" (onPageChange)="paginate($event)"></p-paginator>
-  </div>
+  <app-json-form (jsonParsed)="onJsonParsed($event)"></app-json-form>
+  <app-filter *ngIf="jsonData" [jsonKeys]="jsonKeys" [filters]="filters" (applyFilter)="applyFilter()" (clearFilters)="clearFilters()"></app-filter>
+  <app-table *ngIf="jsonData" [jsonKeys]="jsonKeys" [paginatedData]="paginatedData" [rows]="rows" [totalRecords]="filteredData.length" (paginate)="paginate($event)"></app-table>
 </section>

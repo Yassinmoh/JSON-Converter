@@ -1,0 +1,132 @@
+@import 'common';
+
+.table__data {
+  margin: 2rem 0;
+
+  ::ng-deep p-table {
+    .p-datatable {
+      .p-datatable-wrapper {
+        border-radius: 20px;
+
+        .p-datatable-table {
+          .p-datatable-thead {
+            tr {
+              th {
+                border: 0;
+              }
+
+              .p-sortable-column {
+                padding: 1rem 0 1rem 2rem;
+                margin-left: 0.5rem;
+                font-size: 13px;
+                min-width: 10rem;
+
+                .p-icon-wrapper {
+                  width: 12px;
+                  height: 12px;
+                  display: inline-flex;
+                  vertical-align: sub;
+                }
+              }
+            }
+          }
+
+          .p-datatable-tbody {
+            tr {
+              transition: all 0.2s ease-in-out;
+              cursor: pointer;
+
+              &:hover {
+                background: #f5f7ff;
+              }
+
+              td {
+                padding-left: 2rem;
+                border: 0;
+                height: 74px;
+                @include textStyle(13px, 18px, #3E4954, 500);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ::ng-deep p-paginator {
+    .p-paginator {
+      margin: 1.5rem 0;
+      background: transparent;
+      gap: 0.5rem;
+      justify-content: flex-start;
+
+      .p-paginator-first,
+      .p-paginator-last {
+        display: none;
+      }
+
+      .p-ripple {
+        border: 2px solid #5350EE;
+        border-radius: 8px;
+
+        .p-paginator-icon {
+          width: 22px;
+          height: auto;
+          color: #5350EE;
+        }
+      }
+
+      .p-paginator-pages {
+        .p-paginator-page {
+          @include textStyle(16px, 18px, #5350EE, 500);
+          background: #fff;
+          margin: 0 0.2rem;
+
+          &:is(.p-highlight) {
+            background: #5350EE;
+            @include textStyle(16px, 18px, #fff, 500);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@include DesktopScreen{
+  :host{
+    .table__data {
+      margin: 3rem 0;
+
+      ::ng-deep p-table {
+        .p-datatable {
+          .p-datatable-wrapper {
+            .p-datatable-table {
+              .p-datatable-thead {
+                tr {
+                  .p-sortable-column {
+                    padding: 1rem 0 1rem 2rem;
+                    margin-left: 0.5rem;
+                    font-size: 18px;
+
+                    .p-icon-wrapper {
+                      vertical-align: middle;
+                    }
+                  }
+                }
+              }
+
+              .p-datatable-tbody {
+                tr {
+                  td {
+                    font-size: 16px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,9 +18,13 @@ export class AuthService {
   private currentLoginUser = new BehaviorSubject<string | null>(null);
 
 
-  login(data: { email: string, password: string }) {
-    // Use RapidAPI Authentication:
+  //Authentication using RapidAPI:
 
+  //redentials
+  //  yassin520@gdomain.com
+  //  Ya123456@
+
+  login(data: { email: string, password: string }) {
     this._http.post(`${environment.RapidAPIConfig.BASE_API}${'/login'}`, data, this.OPTIONS).pipe(
       tap((res: any) => {
         this.storeToken(res)

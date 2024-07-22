@@ -1,0 +1,14 @@
+<div class="filter__section" *ngIf="jsonKeys.length">
+  <p class="title">Filter :</p>
+  <div class="filters">
+    <div *ngFor="let key of jsonKeys" class="filter__field">
+      <label>{{ key }}</label>
+      <input type="text" [(ngModel)]="filters[key]" (click)="onFilter()">
+    </div>
+  </div>
+  <div class="btns">
+    <button (click)="onFilter()">Search</button>
+    <button (click)="clear()">Clear Search</button>
+  </div>
+</div>
+
