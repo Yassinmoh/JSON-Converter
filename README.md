@@ -1,27 +1,76 @@
-# json-converter
+# JSON to Table Converter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+## Overview
 
-## Development server
+The JSON to Table Converter is an Angular application that facilitates the conversion of JSON data into a tabular format. This application includes features for user authentication, JSON validation, dynamic filtering, pagination, and accessibility enhancements.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
 
-## Code scaffolding
+- [Overview](#overview)
+- [Features](#features)
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Authentication**: Secure login and logout functionality.
+- **JSON Validation**: Validates the pasted JSON data.
+- **Dynamic Filtering**: Provides filter options based on JSON keys.
+- **Pagination**: Efficiently handles large datasets with pagination.
+- **Accessibility**: Enhanced accessibility with ARIA roles and properties.
 
-## Running unit tests
+## Demo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A live demo of the application can be found [here](#). (Provide the link to your live demo or screenshots of your application)
 
-## Running end-to-end tests
+## Getting Started
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Prerequisites
 
-## Further help
+- Node.js and npm installed. You can download them from [here](https://nodejs.org/).
+- Angular CLI installed globally via npm.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/Yassinmoh/JSON-Converter.git
+    cd json-to-table-converter
+    ```
+
+2. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+1. Start the development server:
+
+    ```bash
+    ng serve
+    ```
+
+2. Open your browser and navigate to `http://localhost:4200`.
+
+## Usage
+
+1. Paste your JSON data into the text area.
+2. Use the filter fields to search through the JSON data.
+3. View the filtered results in the table below.
+4. Use pagination controls to navigate through large datasets.
+
+## Technologies Used
+1. **Angular**: Framework for building the application.
+2. **PrimeNG**: UI components for Angular.
+3. **SCSS**: Styling.
+4. **TypeScript**: Type-safe JavaScript.
+
