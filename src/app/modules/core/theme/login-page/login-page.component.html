@@ -6,14 +6,24 @@
     <div class="title">Login</div>
     <form [formGroup]="loginForm">
       <div class="form__item">
-        <input type="email" placeholder="Email"/>
+        <input type="email" formControlName="email" placeholder="Email"/>
         <svg><use href="#message"></use></svg>
       </div>
 
-      <button pButton class="login-button" (click)="login()">login</button>
+      <div class="form__item">
+        <input type="password" formControlName="password" placeholder="Password"/>
+        <svg><use href="#isolation"></use></svg>
+      </div>
+
+      <button pButton class="login-button" (click)="login($event)">login</button>
     </form>
     <div class="forgot-password">
-      <a href="#">Forget Password?</a>
+      <p>Forget Password?</p>
     </div>
   </div>
 </section>
+
+<!-- Cardencial -->
+
+<!-- yassin520@gdomain.com -->
+<!-- Ya123456@ -->

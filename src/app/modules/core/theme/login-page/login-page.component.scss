@@ -1,7 +1,7 @@
 @import 'common';
 
-:host{
-  .login__section{
+:host {
+  .login__section {
     background: #eaeaea;
     height: 100dvh;
     position: relative;
@@ -16,7 +16,20 @@
   min-height: 100vh;
   background-color: #f5f5f5;
 
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 52%;
+    height: 21%;
+    background: url(../../../../../assets/images/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .login__form {
+    width: 85%;
     background: #fff;
     padding: 2em;
     border-radius: 1em;
@@ -25,36 +38,105 @@
 
     .logo {
       margin-bottom: 1em;
+
       img {
         max-width: 100%;
         height: auto;
       }
     }
-    .title{
 
+    .title {
+      @include textStyle(14px, 20px, #434A5B, 500);
     }
-    form{
-      .form__item{
+
+    form {
+      .form__item {
         position: relative;
-        input{
-          padding:0.5rem 0.5rem  0.5rem 2rem;
-          border: 0;
+        margin: 1rem 0;
+
+        input {
+          height: 45px;
+          width: 100%;
+          padding: 0.5rem 0.5rem 0.5rem 3rem;
+          border: 1px solid #ededec;
+          border-radius: 8px;
           outline: none;
           box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
-        svg{
+
+        svg {
           position: absolute;
           width: 30px;
-          height: 18px;
+          height: 22px;
           left: 0;
           padding-right: 0.5rem;
-          border-right: 2px solid;
+          margin-left: 0.5rem;
+          border-right: 1px solid #9d9d9c;
           top: 50%;
           transform: translateY(-50%);
 
         }
       }
+
+      .login-button {
+        width: 100%;
+        background: #434a5b;
+        @include textStyle(14px, 20px, #fff, bold);
+        padding: 0.5rem 1rem;
+        border: 0;
+        outline: none;
+        border-radius: 8px;
+        margin: 1rem 0;
+      }
     }
 
+    .forgot-password {
+      p {
+        @include textStyle(14px, 20px, #4463B0, 600);
+        padding: 0.5rem 0;
+        text-align: left;
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+
+@include DesktopScreen {
+  :host {
+    .login__section {
+      overflow: hidden;
+
+      &::before {
+        right: -2%;
+        bottom: 0%;
+        width: 46%;
+        height: 53%;
+        z-index: 1;
+      }
+
+      .login__form {
+        height: auto;
+        width: 32%;
+        z-index: 2;
+
+        .logo {
+          width: 101px;
+          height: 88px;
+          margin: 0 auto;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .title {
+          @include textStyle(28px, 20px, #434A5B, 500);
+          margin: 1.5rem 0;
+        }
+      }
+    }
   }
 }

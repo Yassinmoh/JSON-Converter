@@ -5,6 +5,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,6 +19,7 @@ export class LoginPageComponent implements OnInit{
   loginForm!: FormGroup;
 
   _fb = inject(FormBuilder)
+  _authService = inject(AuthService)
 
   ngOnInit(): void {
     this.loginForm = this._fb.group({
@@ -26,9 +28,11 @@ export class LoginPageComponent implements OnInit{
     });
   }
 
-  login() {
+  login(event:Event) {
+    event.preventDefault()
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
+      this._authService.login(this.loginForm.value);
     }
   }
 }
