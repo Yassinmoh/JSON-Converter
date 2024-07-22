@@ -11,7 +11,10 @@
       </div>
 
       <div class="form__item">
-        <input type="password" formControlName="password" placeholder="Password"/>
+        <svg class="eye" (click)="togglePasswordVisibility()">
+          <use [attr.href]="isPasswordVisible ? '#open_eye' : '#off_eye'"></use>
+        </svg>
+        <input [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" placeholder="Password"/>
         <svg><use href="#isolation"></use></svg>
       </div>
 

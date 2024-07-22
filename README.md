@@ -27,7 +27,7 @@ The JSON to Table Converter is an Angular application that facilitates the conve
 
 ## Demo
 
-A live demo of the application can be found [here](#). (Provide the link to your live demo or screenshots of your application)
+A live demo of the application can be found [here](#).
 
 ## Getting Started
 

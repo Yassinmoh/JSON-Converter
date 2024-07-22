@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginPageComponent implements OnInit{
 
   loginForm!: FormGroup;
+  isPasswordVisible: boolean = false;
 
   _fb = inject(FormBuilder)
   _authService = inject(AuthService)
@@ -38,5 +39,9 @@ export class LoginPageComponent implements OnInit{
     }
     this._authService.login(this.loginForm.value);
     this._toastr.success("You have successfully logged in");
+  }
+
+  togglePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 }

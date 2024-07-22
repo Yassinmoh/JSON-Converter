@@ -64,6 +64,15 @@
           box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
 
+        .eye{
+          width: 25px;
+          height: 25px;
+          left: initial;
+          right: 0;
+          border: 0;
+          filter: opacity(0.5);
+        }
+
         svg {
           position: absolute;
           width: 30px;
