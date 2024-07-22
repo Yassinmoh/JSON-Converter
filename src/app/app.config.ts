@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { reducers, metaReducers } from './store';
@@ -14,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(reducers, { metaReducers }),
     provideHttpClient(),
     provideAnimations(),
+    provideToastr({ closeButton: false }),
   ]
 };

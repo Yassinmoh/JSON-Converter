@@ -5,7 +5,7 @@
       <div>
         <textarea id="jsonInput" formControlName="jsonInput"></textarea>
         <div *ngIf="jsonForm.get('jsonInput')?.dirty && jsonForm.get('jsonInput')?.hasError('required')">
-          This field is required.
+          <p class="error">This field is required.</p>
         </div>
         <div *ngIf="errorMessage && jsonForm.get('jsonInput')?.dirty">
           <p class="error">{{ errorMessage }}</p>
@@ -13,19 +13,28 @@
       </div>
     </form>
   </div>
-
-  <div *ngIf="jsonData && jsonKeys.length" class="filters">
-    <div *ngFor="let key of jsonKeys">
-      <label>{{ key }}</label>
-      <input type="text" [(ngModel)]="filters[key]" (input)="applyFilter()">
+  <div class="filter__section">
+    @if(jsonData && jsonKeys.length){
+    <p class="title">Filter :</p>
+    <div class="filters">
+      <div *ngFor="let key of jsonKeys" class="filter__field">
+        <label>{{ key }}</label>
+        <input type="text" [(ngModel)]="filters[key]">
+      </div>
     </div>
+    <div class="btns">
+      <button (click)="applyFilter()">Search</button>
+      <button (click)="clear()">Clear Search</button>
+    </div>
+    }
+
   </div>
 
   <div *ngIf="jsonData" class="table__data">
     <p-table [value]="paginatedData">
       <ng-template pTemplate="header">
         <tr>
-          <th *ngFor="let key of jsonKeys" [pSortableColumn]="key">{{ key }} <p-sortIcon [field]="key"/></th>
+          <th *ngFor="let key of jsonKeys" [pSortableColumn]="key">{{ key }} <p-sortIcon [field]="key" /></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-jsondata>
@@ -34,6 +43,6 @@
         </tr>
       </ng-template>
     </p-table>
-    <p-paginator [rows]="rows" [totalRecords]="filteredData.length" [rowsPerPageOptions]="[10, 20, 30]" (onPageChange)="paginate($event)"></p-paginator>
+    <p-paginator [rows]="rows" [totalRecords]="filteredData.length" (onPageChange)="paginate($event)"></p-paginator>
   </div>
 </section>

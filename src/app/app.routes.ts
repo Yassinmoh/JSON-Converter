@@ -14,7 +14,8 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+        loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
+        canActivate: [AuthGuard]
       },
     ],
 
@@ -25,4 +26,3 @@ export const routes: Routes = [
   }
 ];
 
-// canActivate: [AuthGuard],

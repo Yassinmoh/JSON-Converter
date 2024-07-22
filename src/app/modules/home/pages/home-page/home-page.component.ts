@@ -64,8 +64,6 @@ export class HomePageComponent implements OnInit {
   }
 
   paginate(event: any) {
-    console.log("event",event);
-
     this.currentPage = event.first / event.rows;
     this.rows = event.rows;
     const start = this.currentPage * this.rows;
@@ -74,13 +72,15 @@ export class HomePageComponent implements OnInit {
   }
 
   applyFilter() {
-    console.log("DATA Changed");
-
     this.filteredData = this.jsonData.filter((item: any) => {
       return Object.keys(this.filters).every(key => {
         return item[key].toString().toLowerCase().includes(this.filters[key].toLowerCase());
       });
     });
     this.paginate({ first: 0, rows: this.rows });
+  }
+
+  clear(){
+    this.filters = {};
   }
 }

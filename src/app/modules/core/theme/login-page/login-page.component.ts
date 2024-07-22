@@ -6,6 +6,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-page',
@@ -20,19 +21,22 @@ export class LoginPageComponent implements OnInit{
 
   _fb = inject(FormBuilder)
   _authService = inject(AuthService)
+  _toastr = inject(ToastrService)
 
   ngOnInit(): void {
     this.loginForm = this._fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required]]
     });
   }
 
   login(event:Event) {
     event.preventDefault()
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      this._authService.login(this.loginForm.value);
+    if (!this.loginForm.valid) {
+      this._toastr.error("Username or password incorrect");
+      return;
     }
+    this._authService.login(this.loginForm.value);
+    this._toastr.success("You have successfully logged in");
   }
 }

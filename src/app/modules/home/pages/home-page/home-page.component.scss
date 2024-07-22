@@ -31,10 +31,9 @@
           background: #4C4C4C;
           border-radius: 20px;
           width: 100%;
-          height: 250px;
+          height: 300px;
           padding: 1rem;
           color: #fff;
-
 
           &::-webkit-scrollbar {
             width: 6px;
@@ -72,6 +71,63 @@
     }
   }
 
+  .filter__section {
+    margin: 1rem 0;
+    padding: 0.5rem;
+
+    .title {
+      @include textStyle(25px, 22px, #000, 600);
+      padding: 0.5rem 0;
+      text-align: center;
+    }
+    .filters{
+
+      .filter__field {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          @include textStyle(16px, 22px, #8C8C8C, 400);
+        }
+
+        input {
+          border: 0;
+          outline: none;
+          background: #fff;
+          height: 40px;
+          padding: 0.5rem;
+          margin: 0.5rem 0;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        border: 0;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        border-radius: 8px;
+        padding: 0.5rem;
+        margin: 0.5rem auto;
+      }
+
+      button:nth-child(1) {
+        background: #5350ee;
+        @include textStyle(18px, 20px, #FFF, 400);
+      }
+
+      button:nth-child(2) {
+        border: 1px solid #777777;
+        @include textStyle(18px, 20px, #777777, 400);
+      }
+    }
+  }
+
   .table__data {
     margin: 2rem 0;
 
@@ -79,41 +135,84 @@
       .p-datatable {
         .p-datatable-wrapper {
           border-radius: 20px;
+
           .p-datatable-table {
             .p-datatable-thead {
               tr {
-                th{
+                th {
                   border: 0;
                 }
+
                 .p-sortable-column {
                   padding: 1rem 0 1rem 2rem;
                   margin-left: 0.5rem;
                   font-size: 13px;
                   min-width: 10rem;
+
                   .p-icon-wrapper {
                     width: 12px;
                     height: 12px;
                     display: inline-flex;
                     vertical-align: sub;
-                }
+                  }
                 }
               }
             }
 
-            .p-datatable-tbody{
-              tr{
+            .p-datatable-tbody {
+              tr {
                 transition: all 0.2s ease-in-out;
                 cursor: pointer;
-                &:hover{
+
+                &:hover {
                   background: #f5f7ff;
                 }
-                td{
-                  padding-left:2rem;
+
+                td {
+                  padding-left: 2rem;
                   border: 0;
                   height: 74px;
                   @include textStyle(13px, 18px, #3E4954, 500);
                 }
               }
+            }
+          }
+        }
+      }
+    }
+
+    ::ng-deep p-paginator {
+      .p-paginator {
+        margin: 1.5rem 0;
+        background: transparent;
+        gap: 0.5rem;
+        justify-content: flex-start;
+
+        .p-paginator-first,
+        .p-paginator-last {
+          display: none;
+        }
+
+        .p-ripple {
+          border: 2px solid #5350EE;
+          border-radius: 8px;
+
+          .p-paginator-icon {
+            width: 22px;
+            height: auto;
+            color: #5350EE;
+          }
+        }
+
+        .p-paginator-pages {
+          .p-paginator-page {
+            @include textStyle(16px, 18px, #5350EE, 500);
+            background: #fff;
+            margin: 0 0.2rem;
+
+            &:is(.p-highlight) {
+              background: #5350EE;
+              @include textStyle(16px, 18px, #fff, 500);
             }
           }
         }
@@ -144,6 +243,35 @@
         }
       }
 
+      .filter__section{
+        margin: 3rem 0;
+        .title {
+          text-align: left;
+          padding: 1.2rem 0;
+        }
+        .filters{
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          .filter__field{
+            width: 15%;
+          }
+        }
+
+        .btns{
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          gap: 1rem;
+          button{
+            width: 15%;
+            margin: 1rem 0;
+
+          }
+        }
+      }
+
       .table__data {
         margin: 3rem 0;
 
@@ -157,16 +285,17 @@
                       padding: 1rem 0 1rem 2rem;
                       margin-left: 0.5rem;
                       font-size: 18px;
-                      .p-icon-wrapper{
+
+                      .p-icon-wrapper {
                         vertical-align: middle;
                       }
                     }
                   }
                 }
 
-                .p-datatable-tbody{
-                  tr{
-                    td{
+                .p-datatable-tbody {
+                  tr {
+                    td {
                       font-size: 16px;
                     }
                   }
