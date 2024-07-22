@@ -27,7 +27,7 @@ The JSON to Table Converter is an Angular application that facilitates the conve
 
 ## Demo
 
-A live demo of the application can be found [here](#).
+A live demo of the application can be found [here](https://json-convrter.netlify.app/).
 
 ## Getting Started
 
@@ -42,7 +42,7 @@ A live demo of the application can be found [here](#).
 
     ```bash
     git clone https://github.com/Yassinmoh/JSON-Converter.git
-    cd json-to-table-converter
+    cd JSON-Converte
     ```
 
 2. Install the dependencies:
